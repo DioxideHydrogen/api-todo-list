@@ -1,0 +1,46 @@
+{
+  "name": "api-todo-list",
+  "version": "1.0.0",
+  "description": "API RESTFull with NodeJS to Sweet List App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DioxideHydrogen/api-todo-list.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "api",
+    "restful",
+    "todo",
+    "list",
+    "management",
+    "crud"
+  ],
+  "author": {
+    "name": "DioxideHydrogen",
+    "email": "mxhugoxm@gmail.com",
+    "url": "https://www.linkedin.com/in/hugohenriquesac/"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DioxideHydrogen/api-todo-list/issues"
+  },
+  "homepage": "https://github.com/DioxideHydrogen/api-todo-list#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
