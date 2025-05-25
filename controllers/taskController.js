@@ -3,16 +3,25 @@ const TaskUser = require('../models/TaskUser');
 
 exports.getAllTasks = async (req, res) => {
   try {
-    const links = await TaskUser.find({ userId: req.user._id, deleted: false }).populate('taskId');
+    console.log(">>> req.user recebido:", req.user);
+
+    const links = await TaskUser.find({ userId: req.user._id }).populate('taskId');
+    console.log(">>> Quantidade de vínculos encontrados:", links.length);
+
     const tasks = links
       .map(link => link.taskId)
-      .filter(task => task !== null && task?.deleted === false);
+      .filter(task => task && task.deleted !== true);
+
+    console.log(">>> Quantidade de tarefas filtradas:", tasks.length);
+
     res.json(tasks);
   } catch (err) {
     console.error('Erro ao buscar tarefas:', err);
     res.status(500).json({ error: 'Erro ao buscar tarefas' });
   }
 };
+
+
 
 exports.createTask = async (req, res) => {
 
