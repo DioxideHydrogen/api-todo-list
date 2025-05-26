@@ -129,6 +129,16 @@ exports.deleteTask = async (req, res) => {
   }
 };
 
+exports.deleteTaskPermanently = async (req, res) => {
+  try {
+    const task = await Task.findByIdAndDelete(req.params.id);
+    if (!task) return res.status(404).json({ error: 'Tarefa não encontrada' });
+    res.status(204).end();
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao excluir tarefa permanentemente' });
+  }
+}
+
 exports.getDeletedTasks = async (req, res) => {
   try {
     const links = await TaskUser.find({ userId: req.user._id }).populate('taskId');

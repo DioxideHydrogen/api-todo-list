@@ -11,6 +11,7 @@ router.patch('/tasks/:id/unarchive', authMiddleware, taskController.unarchiveTas
 router.patch('/tasks/:id/complete', authMiddleware, taskController.completeTask);
 router.patch('/tasks/:id/uncomplete', authMiddleware, taskController.uncompleteTask);
 router.delete('/tasks/:id', authMiddleware, taskController.deleteTask);
+router.delete('/tasks/:id/permanently', authMiddleware, taskController.permanentlyDeleteTask);
 router.get('/tasks/deleted', authMiddleware, taskController.getDeletedTasks);
 router.patch('/tasks/:id/restore', authMiddleware, taskController.restoreTask);
 
