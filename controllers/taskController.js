@@ -129,7 +129,7 @@ exports.deleteTask = async (req, res) => {
   }
 };
 
-exports.deleteTaskPermanently = async (req, res) => {
+exports.permanentlyDeleteTask = async (req, res) => {
   try {
     const task = await Task.findByIdAndDelete(req.params.id);
     if (!task) return res.status(404).json({ error: 'Tarefa não encontrada' });
