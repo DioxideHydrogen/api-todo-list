@@ -166,4 +166,3 @@ exports.restoreTask = async (req, res) => {
     res.status(500).json({ error: 'Erro ao restaurar tarefa' });
   }
 }
-
