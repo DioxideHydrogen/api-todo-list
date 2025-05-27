@@ -31,8 +31,7 @@ exports.createTask = async (req, res) => {
   const missingFields = [];
   if (!title) missingFields.push('title');
   if (!description) missingFields.push('description');
-  // se quiser obrigar 'date' ou outros, adicione aqui
-
+  
   if (missingFields.length > 0) {
     return res.status(400).json({
       error: `Campo(s) obrigatório(s) ausente(s): ${missingFields.join(', ')}`
@@ -51,6 +50,7 @@ exports.createTask = async (req, res) => {
 
     res.status(201).json(task);
   } catch (err) {
+    console.error('Erro ao criar tarefa:', err);
     res.status(400).json({ error: 'Erro ao criar tarefa' });
   }
 };

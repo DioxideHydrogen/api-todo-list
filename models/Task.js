@@ -8,17 +8,17 @@ const taskSchema = new mongoose.Schema({
   archived: { type: Boolean, default: false },
   deleted: { type: Boolean, default: false },
   completed: { type: Boolean, default: false },
-}, { timestamps: true });
-
-taskSchema.pre('save', async function (next) {
+}, { timestamps: true }).pre('validate', async function (next) {
+  console.log('Pre-validate hook triggered for Task model');
   if (!this.uniqueId) {
     let exists = true;
     let newId;
-
+    console.log('Generating unique ID for task...');
     while (exists) {
       newId = generateUniqueNumericId();
       exists = await mongoose.models.Task.exists({ uniqueId: newId });
     }
+    console.log(`Generated unique ID: ${newId}`);
 
     this.uniqueId = newId;
   }
